@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    UsersServiceImpl usersServiceImpl = new UsersServiceImpl();
+    bean: 管理对象的创建
+        id: 唯一标识符（对象名）
+        class: 类路径（包，类名）
+    -->
+    <bean id="usersService" class="com.tou.demo.impl.UsersServiceImpl"/>
+
+    <!--
+     创建静态工厂的bean
+    -->
+    <bean id="usersService2" class="com.tou.demo.factory.ObjectFactory" factory-method="getInstance"/>
+
+    <!--
+     创建动态工厂的bean
+     -->
+    <bean id="dynamicObjectFactory" class="com.tou.demo.factory.DynamicObjectFactory"/>
+    <bean id="usersService3" factory-bean="dynamicObjectFactory" factory-method="getInstance"/>
+
+</beans>
